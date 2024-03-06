@@ -13,6 +13,10 @@ class Cuvant {
         System.out.println("Nr. words in txt : " + numarCuvinte());
     }
 
+    public void metoda1(String additionalMessage) {
+        System.out.println(additionalMessage + numarCuvinte());
+    }
+
     public void metoda3() {
         System.out.println("Length txt : " + text.length() + " characters");
     }
@@ -42,7 +46,6 @@ class Cuvant {
         }
     }
 
-
     @Override
     public String toString() {
         return text;
@@ -56,6 +59,12 @@ class Linie extends Cuvant {
 
     public void metoda2() {
         System.out.println("Reversed text: \"" + inverseazaText() + "\"");
+    }
+
+    public void metoda2(int timesToRepeat) {
+        for (int i = 0; i < timesToRepeat; i++) {
+            System.out.println("Reversed text (iteration " + (i + 1) + "): \"" + inverseazaText() + "\"");
+        }
     }
 
     public void afisareLinie() {
@@ -75,7 +84,8 @@ class Program {
 
             linie.text = linie.text + cuvant + " ";
             linie.metoda2();
-            linie.metoda1();
+            linie.metoda1(); // Apel la prima versiune a metodei metoda1()
+            linie.metoda1("Custom message: Nr. words in txt = "); // Apel la a doua versiune a metodei metoda1()
             linie.metoda3();
 
             System.out.print("Do you want to add another word? (Y/N): ");
@@ -84,12 +94,12 @@ class Program {
         linie.afisareLinie();
         linie.metoda1();
         linie.metoda2();
+        linie.metoda2(3); // Apel la a doua versiune a metodei metoda2()
         linie.metoda3();
 
         System.out.print("Do you want to search for a substring? (Y/N): ");
         if (scanner.nextLine().trim().equalsIgnoreCase("Y")) {
             linie.cautaSubstring();
-
         }
 
         scanner.close();
