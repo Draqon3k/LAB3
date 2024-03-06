@@ -22,9 +22,10 @@ class Cuvant {
     }
 
     private int numarCuvinte() {
-        String[] cuvinte = text.split("\\s+");
+            String[] cuvinte = text.split("\\s+");
         return cuvinte.length;
     }
+
 
     String inverseazaText() {
         return new StringBuilder(text).reverse().toString();
@@ -32,7 +33,7 @@ class Cuvant {
 
     public void cautaSubstring() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the substring pattern to search for: ");
+        System.out.print("Enter the text what do you want to search : ");
         String patternToSearch = scanner.nextLine();
         scanner.close();
 
@@ -60,7 +61,10 @@ class Linie extends Cuvant {
     public void metoda2() {
         System.out.println("Reversed text: \"" + inverseazaText() + "\"");
     }
-
+    public void metoda3() {
+        super.metoda3(); // Apelează metoda3 din clasa de bază Cuvant
+        System.out.println("Length of line: " + text.length() + " characters");
+    }
 
     public void afisareLinie() {
         System.out.println("Line : " + text);
@@ -80,8 +84,9 @@ class Program {
             linie.text = linie.text + cuvant + " ";
             linie.metoda2();
             linie.metoda1();
-            linie.metoda1("Nr. words in txt = ");
+            linie.metoda1("Confirm nr. of words in txt = ");
             linie.metoda3();
+
 
             System.out.print("Do you want to add another word? (Y/N): ");
         } while (scanner.nextLine().trim().equalsIgnoreCase("Y"));
